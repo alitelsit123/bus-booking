@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Booking</title>
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="bg-gray-800 text-white">
+        <div class="container mx-auto flex justify-between items-center py-4">
+            <div>
+                <a href="#" class="text-lg font-semibold">Home</a>
+                <a href="#" class="ml-4">List Bus</a>
+                <a href="#" class="ml-4">About Us</a>
+            </div>
+            <div>
+                <a href="#" class="text-white">Login</a>
+                <a href="#" class="ml-4 bg-yellow-500 rounded-md px-4 py-2">Register</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Banner -->
+    <section class="bg-gray-100 py-20">
+        <div class="container mx-auto flex items-center">
+            <div class="w-1/2">
+                <h1 class="text-5xl font-bold mb-6">Bus Booking</h1>
+                <p class="text-gray-600 mb-8">Book your bus tickets with ease</p>
+            </div>
+            <div class="w-1/2">
+                <form>
+                    <div class="mb-4">
+                        <label for="name" class="block text-gray-700">Name</label>
+                        <input type="text" id="name" name="name" class="w-full border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-yellow-500">
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block text-gray-700">Email</label>
+                        <input type="email" id="email" name="email" class="w-full border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-yellow-500">
+                    </div>
+                    <button class="bg-yellow-500 text-white rounded-md px-6 py-3 w-full">Register</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- List Bus -->
+    <section class="bg-white py-20">
+        <div class="container mx-auto grid grid-cols-2 sm:grid-cols-4 gap-8">
+            <div class="bg-gray-100 p-6 rounded-md">
+                <h3 class="text-xl font-semibold mb-4">Bus 1</h3>
+                <p class="text-gray-600">Bus description goes here</p>
+                <button class="mt-4 bg-yellow-500 text-white rounded-md px-4 py-2">Book Now</button>
+            </div>
+            <div class="bg-gray-100 p-6 rounded-md">
+                <h3 class="text-xl font-semibold mb-4">Bus 2</h3>
+                <p class="text-gray-600">Bus description goes here</p>
+                <button class="mt-4 bg-yellow-500 text-white rounded-md px-4 py-2">Book Now</button>
+            </div>
+            <!-- Repeat the above code for more bus cards -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto flex justify-between">
+            <div class="w-1/2">
+                <h4 class="text-xl font-semibold mb-4">About Us</h4>
+                <p class="text-gray-400">Some information about your company.</p>
+            </div>
+            <div class="w-1/2">
+                <h4 class="text-xl font-semibold mb-4">Send us a message</h4>
+                <div class="flex">
+                    <input type="text" class="w-full border-gray-700 rounded-md py-2 px-4 focus:outline-none focus:border-yellow-500">
+                    <button class="bg-yellow-500 rounded-md px-4 py-2 ml-4">Send</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Include Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com/2.2.16/tailwind.min.js"></script>
+</body>
+</html>
