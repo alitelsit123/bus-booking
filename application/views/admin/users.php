@@ -228,7 +228,7 @@
             cancelButtonText: 'Cancel',
         }).then(function(isConfirm) {
             if (isConfirm.isConfirmed) {
-							window.location.href = '<?= base_url('/admin') ?>/type/delete/' + id;
+							window.location.href = '<?= base_url('/admin') ?>/account/delete/' + id;
             }
         });
     });

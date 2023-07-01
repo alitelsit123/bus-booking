@@ -18,6 +18,11 @@ class Users extends CI_Model {
 			$query = $this->db->get('users');
 			return $query->num_rows() > 0;
 		}
+		public function update($id, $data)
+    {
+        $this->db->where('id', $id);
+        return $this->db->update('users', $data);
+    }
 		public function find($id)
     {	
         return $this->db->get_where('users', ['id' => $id])->row();

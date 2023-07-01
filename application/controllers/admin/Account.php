@@ -13,7 +13,7 @@ class Account extends MY_Controller
 
     public function update($id)
     {
-			$this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[users.email]');
+			$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
 			$this->form_validation->set_rules('name', 'Nama', 'required');
 			$this->form_validation->set_rules('phone', 'Nomor HP', 'required');
 			$this->form_validation->set_rules('nik', 'Nomor Induk', 'required');
@@ -24,10 +24,10 @@ class Account extends MY_Controller
 					redirect('/');
 			} else {
 				$email = $this->input->post('email');
-				if ($this->Users->emailExists($email)) {
-						$this->session->set_flashdata('error', 'The email is already registered.');
-						redirect('home');
-				}
+				// if ($this->Users->emailExists($email)) {
+				// 		$this->session->set_flashdata('error', 'The email is already registered.');
+				// 		redirect($_SERVER['HTTP_REFERER']);
+				// }
 
 				$data = array(
 					'email' => $this->input->post('email'),
@@ -38,18 +38,19 @@ class Account extends MY_Controller
 					'role' => 'customer'
 				);
 
-				$this->Users->register($data);
 
-				$this->session->set_flashdata('success', 'Akun ditambah!');
+				$this->Users->update($id,$data);
+
+				$this->session->set_flashdata('success', 'Akun diubah!');
 				redirect($_SERVER['HTTP_REFERER']);
     }
 	}
 
     public function delete($id)
     {
-        $this->Bus_model->delete($id);
-        $this->session->set_flashdata('success', 'Bus deleted successfully.');
-        redirect('admin/bus');
+        $this->Account_model->delete($id);
+        $this->session->set_flashdata('success', 'Akun deleted successfully.');
+				redirect($_SERVER['HTTP_REFERER']);
     }
 
     private function uploadImage()
