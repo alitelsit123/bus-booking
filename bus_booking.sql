@@ -36,6 +36,10 @@ CREATE TABLE `bookings` (
   `bus_id` bigint(20) unsigned DEFAULT NULL,
   `payment_date` varchar(255) DEFAULT NULL,
   `status_booking` varchar(255) DEFAULT NULL,
+  `city_from` varchar(255) DEFAULT NULL,
+  `location_from` text DEFAULT NULL,
+  `city_to` varchar(255) DEFAULT NULL,
+  `location_to` text DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -47,9 +51,9 @@ CREATE TABLE `bookings` (
 LOCK TABLES `bookings` WRITE;
 /*!40000 ALTER TABLE `bookings` DISABLE KEYS */;
 INSERT INTO `bookings` VALUES
-(4,'INV-64961259547EC','8c2c0070-663f-4866-9e93-95cf2f8eda9f','2023-06-24',75000000,'2023-06-24','2023-07-24',NULL,'settlement',3,2,'2023-06-24 08:06:09',''),
-(5,'INV-649612DC7398D','cef30f12-3ce5-46f0-81ff-1f71ace4afb2','2023-06-24',8000000,'2023-06-22','2023-06-30',NULL,'settlement',3,1,'2023-06-24 04:49:59','Belum di ambil'),
-(6,'INV-649640C2DD50A','0fb231b5-b891-46a3-be5a-0f1100277ad1','2023-06-24',7800000,'2023-06-24','2023-06-30',NULL,'pending',3,3,NULL,NULL);
+(4,'INV-64961259547EC','8c2c0070-663f-4866-9e93-95cf2f8eda9f','2023-06-24',75000000,'2023-06-24','2023-07-24',NULL,'settlement',3,2,'2023-06-24 08:06:09','',NULL,NULL,NULL,NULL),
+(5,'INV-649612DC7398D','cef30f12-3ce5-46f0-81ff-1f71ace4afb2','2023-06-24',8000000,'2023-06-22','2023-06-30',NULL,'settlement',3,1,'2023-06-24 04:49:59','Belum di ambil',NULL,NULL,NULL,NULL),
+(6,'INV-649640C2DD50A','0fb231b5-b891-46a3-be5a-0f1100277ad1','2023-06-24',7800000,'2023-06-24','2023-06-30',NULL,'pending',3,3,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `bookings` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -131,7 +135,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -149,7 +153,8 @@ INSERT INTO `migrations` VALUES
 (14,'2023_06_23_021230_refactor_to_companies_table',4),
 (16,'2023_06_23_164057_create_bookings_table',5),
 (17,'2023_06_23_212421_add_payment_date_to_bookings_table',6),
-(18,'2023_06_23_220824_add_status_booking_to_bookings_table',7);
+(18,'2023_06_23_220824_add_status_booking_to_bookings_table',7),
+(19,'2023_07_01_084856_add_book_attrs_to_bookings_table',8);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -197,7 +202,7 @@ CREATE TABLE `types` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -208,7 +213,7 @@ LOCK TABLES `types` WRITE;
 /*!40000 ALTER TABLE `types` DISABLE KEYS */;
 INSERT INTO `types` VALUES
 (6,'Luxury'),
-(7,'Biasa');
+(8,'test');
 /*!40000 ALTER TABLE `types` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -255,4 +260,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-28 23:08:08
+-- Dump completed on 2023-07-01 16:30:31
