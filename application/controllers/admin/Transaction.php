@@ -10,4 +10,10 @@ class Transaction extends MY_Controller {
 		$book = $this->Book_model->find($id);
 		$this->load->view('admin/invoice', ['book' => $book]);
 	}
+	public function delete($id)
+    {
+        $this->Book_model->delete($id);
+        $this->session->set_flashdata('success', 'Transaksi deleted successfully.');
+				redirect($_SERVER['HTTP_REFERER']);
+    }
 }

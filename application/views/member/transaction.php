@@ -21,7 +21,7 @@
 							<?php foreach ($this->Book_model->myBooks() as $book) : ?>
 									<tr>
 											<td><?= $book->code ?></td>
-											<td><?= $this->Bus_model->find($book->bus_id)->name ?></td>
+											<td><?= $this->Bus_model->find($book->bus_id)->name ?? '' ?></td>
 											<td>
 												<?php if($book->payment_date): ?>
 												<div class="badge badge-success">Status <?= $book->status ?></div>

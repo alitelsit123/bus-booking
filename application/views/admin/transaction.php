@@ -65,6 +65,7 @@
 												<?php if($book->payment_date): ?>
 												<a target="_blank" href="<?= base_url('admin/transaction/invoice/'.$book->id) ?>" class="btn btn-sm btn-primary">Invoice</a>
 												<?php endif; ?>
+												<a href="<?= base_url('admin/transaction/delete/'.$book->id) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Yakin hapus ?')">Hapus</a>
 											</td>
 									</tr>
 							<?php endforeach; ?>
