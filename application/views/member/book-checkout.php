@@ -2,7 +2,15 @@
 <?php
 $existingBook = null;
 if ($bus) {
+	// $existingBook = $this->db->select('*')->get_where('bookings', ['bus_id' => $bus->id, 'user_id' => $this->session->userdata('user')->id])->row();
 	$existingBook = $this->db->select('*')->get_where('bookings', ['status' => 'pending','bus_id' => $bus->id, 'user_id' => $this->session->userdata('user')->id])->row();
+	// var_dump($existingBook);return;exit(0);
+	if ($existingBook) {
+		// var_dump($existingBook);
+		if ($data['city_from'] && $data['location_from'] && $data['city_to'] && $data['location_to']) {
+			$this->Book_model->update($existingBook->id,['city_from' => $data['city_from'],'location_from' => $data['location_from'], 'city_to' => $data['city_to'], 'location_to' => $data['location_to']]);
+		}
+	}
 }
 ?>
 <script>
@@ -65,8 +73,8 @@ checkStatus(bookId);
 					</div>
 
 					<div class="mb-4">
-						<h1><?= $bus->name ?></h1>
-						<div><?= $bus->description ?></div>
+						<h1><?= $bus->name ?? '' ?></h1>
+						<div><?= $bus->description ?? '' ?></div>
 					</div>
 
 					<!-- info row -->
@@ -75,8 +83,8 @@ checkStatus(bookId);
 							<div class="card-body">
 								Dari
 								<address>
-									<strong><?= $data['city_from'] ?></strong><br>
-									<?= $data['location_from'] ?><br>
+									<strong><?= $existingBook->city_from ?? $data['city_from'] ?></strong><br>
+									<?= $existingBook->location_from ?? $data['location_from'] ?><br>
 									Phone: <?= $this->Company_model->first()->phone ?><br>
 									Email: <?= $this->Company_model->first()->email ?>
 								</address>
@@ -87,8 +95,8 @@ checkStatus(bookId);
 							<div class="card-body">
 								Ke
 								<address>
-									<strong><?= $data['city_to'] ?></strong><br>
-									<?= $data['location_to'] ?><br>
+									<strong><?= $existingBook->city_to ?? $data['city_to'] ?></strong><br>
+									<?= $existingBook->location_to ?? $data['location_to'] ?><br>
 									<!-- Phone: <?= $this->session->userdata('user')->phone ?><br>
 									Email: <?= $this->session->userdata('user')->email ?> -->
 								</address>
@@ -173,37 +181,41 @@ checkStatus(bookId);
 							<script>
 								$(document).ready(function() {
 									$('form').submit(function(e) {
-										$.post($(this).attr('action'), {bus_id:'<?= $bus->id ?>',start_book:'<?= $start_date ?>',end_book: '<?= $end_date ?>'}, (r) => {
-											const resp = JSON.parse(r)
-											<?php if(!$existingBook): ?>
-											pollingInterval = setInterval(function() {
-												checkStatus(resp.id);
-											}, 5000); // Poll every 5 seconds (adjust as needed)
-											<?php endif; ?>
-											window.snap.pay(resp.token, {
-												onSuccess: function(result){
-													/* You may add your own implementation here */
-													checkStatus(resp.id)
-													// Swal.fire('Berhasil', 'Pembayaran anda berhasil, Silahkan cek status transaksi di menu transaksi', 'success')
-												},
-												onPending: function(result){
-													/* You may add your own implementation here */
-													Swal.fire('Info', 'Menunggu pembayaran', 'info')
-												},
-												onError: function(result){
-													/* You may add your own implementation here */
-													Swal.fire('Info', 'Pembayaran gagal!', 'error')
-												},
-												onClose: function(){
-													/* You may add your own implementation here */
-													Swal.fire(
-														'Informasi',
-														'Silahkan bayar terlebih dahulu',
-														'info'
-													)
-												}
-											});
-										})
+										try {
+											$.post($(this).attr('action'), {bus_id:'<?= $bus->id ?>',start_book:'<?= $start_date ?>',end_book: '<?= $end_date ?>'}, (r) => {
+												const resp = JSON.parse(r)
+												<?php if(!$existingBook): ?>
+												pollingInterval = setInterval(function() {
+													checkStatus(resp.id);
+												}, 5000); // Poll every 5 seconds (adjust as needed)
+												<?php endif; ?>
+												window.snap.pay(resp.token, {
+													onSuccess: function(result){
+														/* You may add your own implementation here */
+														checkStatus(resp.id)
+														// Swal.fire('Berhasil', 'Pembayaran anda berhasil, Silahkan cek status transaksi di menu transaksi', 'success')
+													},
+													onPending: function(result){
+														/* You may add your own implementation here */
+														Swal.fire('Info', 'Menunggu pembayaran', 'info')
+													},
+													onError: function(result){
+														/* You may add your own implementation here */
+														Swal.fire('Info', 'Pembayaran gagal!', 'error')
+													},
+													onClose: function(){
+														/* You may add your own implementation here */
+														Swal.fire(
+															'Informasi',
+															'Silahkan bayar terlebih dahulu',
+															'info'
+														)
+													}
+												});
+											})
+										} catch (error) {
+											alert('Server error!')
+										}
 										e.preventDefault()
 										return false
 									})

@@ -36,13 +36,16 @@
 												<?php endif; ?>
 											</td>
 											<td>
-												<?php if(!$book->payment_date): ?>
+												<?php if(!$book->payment_date && $this->Bus_model->find($book->bus_id)): ?>
 												<form action="<?= base_url('member/book/checkout') ?>/<?= $book->bus_id ?>" method="get">
 													<input type="hidden" name="date" value="<?= $book->start_book ?> - <?= $book->end_book ?>" />
 													<button type="submit" class="btn btn-success float-right">
 														Bayar Sekarang
 													</button>
 												</form>
+												<?php endif; ?>
+												<?php if(!$this->Bus_model->find($book->bus_id)): ?>
+												Tidak bisa melanjutkan transaksi, data bus tidak ada
 												<?php endif; ?>
 												<?php if($book->payment_date): ?>
 												<a target="_blank" href="<?= base_url('admin/transaction/invoice/'.$book->id) ?>" class="btn btn-sm btn-primary">Invoice</a>

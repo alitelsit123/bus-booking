@@ -23,16 +23,29 @@ class Book extends MY_Controller {
 				'location_to' => $this->input->get('location_to')
 			]
 		];
+		$start_book = $this->input->post('start_book');
+		$end_book = $this->input->post('end_book');
+		$bus_id = $id;
+		
+		// Calculate gross amount based on busses.price_daily and date difference
+		$priceDaily = $this->db->select('price_daily')->get_where('busses', ['id' => $bus_id])->row()->price_daily;
+		$dateDiff = strtotime($end_book) - strtotime($start_book);
+		$dateDiff = floor($dateDiff / (60 * 60 * 24)); // Convert to days
+		$gross_amount = $priceDaily * $dateDiff;
+		
+		// Get the current user's ID from authentication (assuming you have authentication implemented)
+		$user_id = $this->session->userdata('user')->id;
+		$this->create($bus_id,$startDate,$endDate);
 		$this->load->view('member/book-checkout', $data);
 	}
 	public function getToken() {
 		echo $this->create();
 	}
-	public function create()
+	public function create($id = null,$startDate = null,$endDate = null)
 	{
-		$start_book = $this->input->post('start_book');
-		$end_book = $this->input->post('end_book');
-		$bus_id = $this->input->post('bus_id');
+		$start_book = $this->input->post('start_book') ?? $startDate;
+		$end_book = $this->input->post('end_book') ?? $endDate;
+		$bus_id = $this->input->post('bus_id') ?? $id;
 		
 		// Calculate gross amount based on busses.price_daily and date difference
 		$priceDaily = $this->db->select('price_daily')->get_where('busses', ['id' => $bus_id])->row()->price_daily;
@@ -76,10 +89,12 @@ class Book extends MY_Controller {
 			$this->db->insert('bookings', $transactionData);
 		} else {
 			$token = $existingBook->token;
-			$this->Book_model->update($existingBook, [
+			$this->Book_model->update($existingBook->id, [
 				'start_book' => $start_book,
 				'end_book' => $end_book,
+				'gross_amount' => $gross_amount,
 			]);
+
 			try {
 				// $statusTransaction = $this->checkToken($existingBook->code);
 			} catch (\Throwable $th) {
