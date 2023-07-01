@@ -164,11 +164,11 @@
 												</script>
 											</td>
 											<td>
-												<a href="#" class="btn btn-primary btn-xs update-btn" data-toggle="modal" data-target="#updateModal">
+												<a href="#" class="btn btn-primary btn-xs update-btn" data-toggle="modal" data-target="#updateModal<?= $bus->id ?>">
 														<i class="fa fa-edit"></i>
 												</a>
 												<!-- Update Modal -->
-												<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
+												<div class="modal fade" id="updateModal<?= $bus->id ?>" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
 														<div class="modal-dialog">
 																<div class="modal-content">
 																		<div class="modal-header">
@@ -179,7 +179,7 @@
 																		</div>
 																		<div class="modal-body">
 																				<!-- Form inside the modal -->
-																				<form action="<?php echo base_url('admin/bus/update/'.$bus->id); ?>" method="post" enctype="multipart/form-data">
+																				<form action="<?= base_url('admin/bus/update/'.$bus->id) ?>" data-id="" method="post" enctype="multipart/form-data">
 																					<div class="form-group">
 																							<label for="type">Name:</label>
 																							<input type="text" class="form-control" id="type" name="name" value="<?= $bus->name ?>">
