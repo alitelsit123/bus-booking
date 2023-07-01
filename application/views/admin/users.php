@@ -120,11 +120,11 @@
 											<td><?= $account->nik ?></td>
 											<td><?= $account->address ?></td>
 											<td>
-												<a href="#" class="btn btn-primary btn-xs update-btn" data-toggle="modal" data-target="#updateModal">
+												<a href="#" class="btn btn-primary btn-xs update-btn" data-toggle="modal" data-target="#updateModal<?= $account->id ?>">
 														<i class="fa fa-edit"></i>
 												</a>
 												<!-- Update Modal -->
-												<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
+												<div class="modal fade" id="updateModal<?= $account->id ?>" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
 														<div class="modal-dialog">
 																<div class="modal-content">
 																		<div class="modal-header">
