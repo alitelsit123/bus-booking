@@ -23,8 +23,8 @@ class Book extends MY_Controller {
 				'location_to' => $this->input->get('location_to')
 			]
 		];
-		$start_book = $this->input->post('start_book');
-		$end_book = $this->input->post('end_book');
+		$start_book = $startDate;
+		$end_book = $endDate;
 		$bus_id = $id;
 		
 		// Calculate gross amount based on busses.price_daily and date difference
