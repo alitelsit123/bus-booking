@@ -36,16 +36,16 @@
 				<table id="myTable" class="table table-stripped">
 					<thead>
 						<tr>
-							<th>#</th>
-							<th>Name</th>
-							<th>#</th>
+							<th>ID</th>
+							<th>Nama</th>
+							<th>Aksi</th>
 						</tr>
 					</thead>
 					<tbody>
 					<?php if (!empty($this->Type_model->getAll())) : ?>
 							<?php foreach ($this->Type_model->getAll() as $type) : ?>
 									<tr>
-											<td><?= $type->id ?></td>
+											<td>#<?= $type->id ?></td>
 											<td><?= $type->name ?></td>
 											<td>
 												<a href="#" class="btn btn-primary btn-xs update-btn" data-toggle="modal" data-target="#updateModal<?= $type->id ?>">

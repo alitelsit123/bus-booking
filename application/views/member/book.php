@@ -10,7 +10,7 @@
 				<div class="card">
 					<div class="card-header"><h4>
 						<?= $row->name ?></h4>
-						<div class="badge badge-info"><?= $this->Type_model->find($row->type_id)->name ?></div>
+						<div class="badge badge-info"><?= $this->Type_model->find($row->type_id)->name ?? '<small><i>Tipe tidak ada atau dibapus!</i></small>' ?></div>
 					</div>
 					<?php if($row->image): ?>
 					<img src="<?= base_url('assets/upload/'.$row->image) ?>" alt="" srcset="" 
@@ -32,7 +32,7 @@
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
 									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLabel">Pilih Rentan Waktu</h5>
+										<h5 class="modal-title" id="exampleModalLabel">Isi Form Dibawah ini</h5>
 										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 											<span aria-hidden="true">&times;</span>
 										</button>
@@ -55,6 +55,23 @@
 														})
 													})()
 												</script>
+											</div>
+											<div class="form-group mt-3">
+												<label for="">Dari Kota</label>
+												<input type="text" name="city_from" class="form-control" >
+											</div>
+											<div class="form-group">
+												<label for="">Alamat Penjemputan</label>
+												<input type="text" name="location_from" class="form-control" >
+											</div>
+											<hr />
+											<div class="form-group mt-3">
+												<label for="">Tujuan Kota</label>
+												<input type="text" name="city_to" class="form-control" >
+											</div>
+											<div class="form-group">
+												<label for="">Tujuan Wisata</label>
+												<input type="text" name="location_to" class="form-control" >
 											</div>
 										</div>
 										<div class="modal-footer">

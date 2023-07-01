@@ -75,8 +75,8 @@ checkStatus(bookId);
 							<div class="card-body">
 								Dari
 								<address>
-									<strong><?= $this->Company_model->first()->name ?></strong><br>
-									<?= $this->Company_model->first()->address ?><br>
+									<strong><?= $data['city_from'] ?></strong><br>
+									<?= $data['location_from'] ?><br>
 									Phone: <?= $this->Company_model->first()->phone ?><br>
 									Email: <?= $this->Company_model->first()->email ?>
 								</address>
@@ -87,10 +87,10 @@ checkStatus(bookId);
 							<div class="card-body">
 								Ke
 								<address>
-									<strong><?= $this->session->userdata('user')->name ?></strong><br>
-									<?= $this->session->userdata('user')->address ?><br>
-									Phone: <?= $this->session->userdata('user')->phone ?><br>
-									Email: <?= $this->session->userdata('user')->email ?>
+									<strong><?= $data['city_to'] ?></strong><br>
+									<?= $data['location_to'] ?><br>
+									<!-- Phone: <?= $this->session->userdata('user')->phone ?><br>
+									Email: <?= $this->session->userdata('user')->email ?> -->
 								</address>
 							</div>
 						</div>

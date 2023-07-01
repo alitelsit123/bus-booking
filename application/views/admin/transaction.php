@@ -13,8 +13,8 @@
 							<th>#TX</th>
 							<th>Nama Bus</th>
 							<th>Informasi</th>
-							<th>#Status sewa</th>
-							<th>#</th>
+							<!-- <th>#Status sewa</th> -->
+							<th>Aksi</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -33,7 +33,7 @@
 												<div class="badge badge-warning">Status <?= $book->status ?></div>
 												<?php endif; ?>
 											</td>
-											<td>
+											<!-- <td>
 												<select name="" id="" class="form-control status-<?= $book->id ?>">
 													<option value="">-- Pilih Aksi --</option>
 													<option value="Belum di ambil" <?= $book->status_booking == 'Belum di ambil' ? 'selected':'' ?>>Belum diambil</option>
@@ -54,7 +54,7 @@
 														})
 													})
 												</script>
-											</td>
+											</td> -->
 											<td>
 												<?php if($book->payment_date): ?>
 												<a target="_blank" href="<?= base_url('admin/transaction/invoice/'.$book->id) ?>" class="btn btn-sm btn-primary">Invoice</a>

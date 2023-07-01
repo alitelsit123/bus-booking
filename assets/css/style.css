@@ -381,7 +381,7 @@ ul.btn li:last-child {
 /** banner section **/
 
 .banner_main {
-     background: url(../images/banner.jpg);
+     background: url("../bus/bg selamat datang/IMG_20230701_065351.jpg");
      background-repeat: no-repeat;
      min-height: 700px;
      background-size: 100% 100%;

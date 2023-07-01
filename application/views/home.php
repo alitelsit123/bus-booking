@@ -17,12 +17,13 @@
 														<h1>Selamat Datang</h1>
 														<span>Official PO. Trans Saba</span>
 														<!-- <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, </p> -->
-														<a href="#">More Info </a> <a href="https://www.instagram.com/potranssaba/?igshid=MzRlODBiNWFlZA%3D%3D">Contact Us <i class="fa fa-instagram"></i></a>
+														<a href="https://linktr.ee/potranssaba">More Info </a> 
+														<!-- <a href="https://www.instagram.com/potranssaba/?igshid=MzRlODBiNWFlZA%3D%3D">Contact Us <i class="fa fa-instagram"></i></a> -->
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="text_img" style="width:370px;height:329px;">
-														<figure><img src="sdf<?= base_url('assets/images/car.png') ?>" alt="#"/></figure>
+														<figure><img src="<?= base_url('assets/bus/auto selamat datang/IMG_20230701_070222.jpg') ?>" alt="#" style="width:100%;height:auto;" /></figure>
 												</div>
 											</div>
 									</div>
@@ -38,12 +39,13 @@
 														<h1>Selamat Datang</h1>
 														<span>Official PO. Trans Saba</span>
 														<!-- <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, </p> -->
-														<a href="https://linktr.ee/potranssaba">More Info </a> <a href="https://www.instagram.com/potranssaba/?igshid=MzRlODBiNWFlZA%3D%3D">Contact Us <i class="fa fa-instagram"></i></a>
+														<a href="https://linktr.ee/potranssaba">More Info </a> 
+														<!-- <a href="https://www.instagram.com/potranssaba/?igshid=MzRlODBiNWFlZA%3D%3D">Contact Us <i class="fa fa-instagram"></i></a> -->
 												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="text_img" style="width:370px;height:329px;">
-														<figure><img src="sdf<?= base_url('assets/images/car.png') ?>" alt="#"/></figure>
+														<figure><img src="<?= base_url('assets/bus/bg selamat datang/IMG_20230701_065414.jpg') ?>" alt="#"/></figure>
 												</div>
 											</div>
 									</div>
@@ -66,22 +68,22 @@
 			<div class="row">
 					<div class="col-md-4">
 						<div class="box_text">
-								<h3>AUTO DIAGNOSE</h3>
-								<i><img src="<?= base_url('assets/images/thr.png') ?>" alt="#"/></i>
+								<!-- <h3>NYAMAN</h3> -->
+								<i><img src="<?= base_url('assets/bus/auto selamat datang/IMG_20230701_070222.jpg') ?>" alt="#"/></i>
 								<p>#</p>
 						</div>
 					</div>
 					<div class="col-md-4">
 						<div class="box_text">
-								<h3>AUTO DIAGNOSE</h3>
-								<i><img src="<?= base_url('assets/images/thr1.png') ?>" alt="#"/></i>
+								<!-- <h3>AUTO DIAGNOSE</h3> -->
+								<i><img src="<?= base_url('assets/bus/auto selamat datang/IMG_20230701_070346.jpg') ?>" alt="#"/></i>
 								<p>#</p>
 						</div>
 					</div>
 					<div class="col-md-4">
 						<div class="box_text">
-								<h3>AUTO DIAGNOSE</h3>
-								<i><img src="<?= base_url('assets/images/thr2.png') ?>" alt="#"/></i>
+								<!-- <h3>AUTO DIAGNOSE</h3> -->
+								<i><img src="<?= base_url('assets/bus/auto selamat datang/IMG_20230701_070452.jpg') ?>" alt="#"/></i>
 								<p>#</p>
 						</div>
 					</div>
@@ -106,7 +108,6 @@
 								<ol class="carousel-indicators">
 									<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 									<li data-target="#myCarousel" data-slide-to="1"></li>
-									<li data-target="#myCarousel" data-slide-to="2"></li>
 								</ol>
 								<div class="carousel-inner">
 									<div class="carousel-item active">
@@ -115,42 +116,18 @@
 														<div class="row">
 															<div class="col-md-6 margin_boot">
 																	<div class="test_box">
-																		<i><img src="<?= base_url('assets/images/tes.jpg') ?>" alt="#"/></i>
-																		<h4>JCKOLO</h4>
-																		<span>(It is a long )</span>
-																		<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as </p>
+																		<i><img src="<?= base_url('assets/bus/gambar testimonial/IMG_20230701_064216.jpg') ?>" alt="#"/></i>
+																		<h4>Team Creative</h4>
+																		<span></span>
+																		<p>Bis nya nyaman kak.</p>
 																	</div>
 															</div>
 															<div class="col-md-6 margin_boot">
 																	<div class="test_box">
-																		<i><img src="<?= base_url('assets/images/tes1.jpg') ?>" alt="#"/></i>
-																		<h4>ROCOYO</h4>
-																		<span>(It is a long )</span>
-																		<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as </p>
-																	</div>
-															</div>
-														</div>
-												</div>
-											</div>
-									</div>
-									<div class="carousel-item">
-											<div class="container">
-												<div class="carousel-caption">
-														<div class="row">
-															<div class="col-md-6 margin_boot">
-																	<div class="test_box">
-																		<i><img src="<?= base_url('assets/images/tes.jpg') ?>" alt="#"/></i>
-																		<h4>JCKOLO</h4>
-																		<span>(It is a long )</span>
-																		<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as </p>
-																	</div>
-															</div>
-															<div class="col-md-6 margin_boot">
-																	<div class="test_box">
-																		<i><img src="<?= base_url('assets/images/tes1.jpg') ?>" alt="#"/></i>
-																		<h4>ROCOYO</h4>
-																		<span>(It is a long )</span>
-																		<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as </p>
+																		<i><img src="<?= base_url('assets/bus/gambar testimonial/IMG_20230701_064702.jpg') ?>" alt="#"/></i>
+																		<h4>Rombongan Kades</h4>
+																		<span></span>
+																		<p>Terimakasih kepada semua anggota PO. Trans salim</p>
 																	</div>
 															</div>
 														</div>
@@ -163,18 +140,18 @@
 														<div class="row">
 															<div class="col-md-6 margin_boot">
 																	<div class="test_box">
-																		<i><img src="<?= base_url('assets/images/tes.jpg')?>" alt="#"/></i>
-																		<h4>JCKOLO</h4>
-																		<span>(It is a long )</span>
-																		<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as </p>
+																		<i><img src="<?= base_url('assets/bus/gambar testimonial/IMG_20230701_085325.jpg') ?>" alt="#"/></i>
+																		<h4>Flying Dutchman</h4>
+																		<span></span>
+																		<p>Kami semua merasa nyaman dengan busnya, terimakasih.</p>
 																	</div>
 															</div>
 															<div class="col-md-6 margin_boot">
 																	<div class="test_box">
-																		<i><img src="<?= base_url('assets/images/tes1.jpg') ?>" alt="#"/></i>
-																		<h4>ROCOYO</h4>
-																		<span>(It is a long )</span>
-																		<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as </p>
+																		<i><img src="<?= base_url('assets/bus/gambar testimonial/IMG_20230701_085400.jpg') ?>" alt="#"/></i>
+																		<h4>SDN Sukowidi 2</h4>
+																		<span></span>
+																		<p>Para murid sangat senang.</p>
 																	</div>
 															</div>
 														</div>

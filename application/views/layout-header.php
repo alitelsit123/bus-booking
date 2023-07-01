@@ -205,9 +205,9 @@
                               <li class="nav-item">
                                  <a class="nav-link" href="#testimonial">Testimonial</a>
                               </li>
-                              <li class="nav-item">
+                              <!-- <li class="nav-item">
                                  <a class="nav-link" href="#contact">Contact Us</a>
-                              </li>
+                              </li> -->
 															<?php if($this->session->userdata('user')): ?> 
 																<li class="nav-item dropdown">
 																<a class="nav-link dropdown-toggle" href="#"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle padd_right" aria-hidden="true"></i><?= $this->session->userdata('user')->email ?></a>

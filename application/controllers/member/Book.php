@@ -16,6 +16,12 @@ class Book extends MY_Controller {
 			'bus' => $this->Bus_model->find($id),
 			'start_date' => $startDate,
 			'end_date' => $endDate,
+			'data' => [
+				'city_from' => $this->input->get('city_from'),
+				'city_to' => $this->input->get('city_to'),
+				'location_from' => $this->input->get('location_from'),
+				'location_to' => $this->input->get('location_to')
+			]
 		];
 		$this->load->view('member/book-checkout', $data);
 	}
@@ -58,6 +64,10 @@ class Book extends MY_Controller {
 					'start_book' => $start_book,
 					'end_book' => $end_book,
 					'data' => $data,
+					'city_from' => $this->input->post('city_from'),
+					'location_from' => $this->input->post('location_from'),
+					'city_to' => $this->input->post('city_to'),
+					'location_to' => $this->input->post('location_to'),
 					'user_id' => $user_id,
 					'bus_id' => $bus_id,
 					'status' => 'pending'
