@@ -22,7 +22,7 @@
 							<?php foreach ($this->Book_model->getAll() as $book) : ?>
 									<tr>
 											<td><?= $book->code ?></td>
-											<td><?= $this->Bus_model->find($book->bus_id)->name ?></td>
+											<td><?= $this->Bus_model->find($book->bus_id)->name ?? '' ?></td>
 											<td>
 												<?php if($book->payment_date): ?>
 												<div class="badge badge-success">Status pembayaran <?= $book->status ?></div><br />
@@ -32,6 +32,12 @@
 												<?php else: ?>
 												<div class="badge badge-warning">Status <?= $book->status ?></div>
 												<?php endif; ?>
+												<div class="card card-outlined mt-1">
+													<div class="card-body">
+													<small class="btn-block">Kota Penjemputan: <?= $book->city_from ?> <br />Lokasi Penjemputan: <?= $book->location_from ?></small>
+													<small class="">Kota Tujuan: <?= $book->city_to ?> <br />Alamat Tujuan: <?= $book->location_to ?></small>
+													</div>
+												</div>
 											</td>
 											<!-- <td>
 												<select name="" id="" class="form-control status-<?= $book->id ?>">

@@ -89,6 +89,14 @@
                 </tr>
             </tbody>
         </table>
+				<div>
+					<div class="card card-outlined mt-1">
+						<div class="card-body">
+						<small class="btn-block">Kota Penjemputan: <?= $book->city_from ?> <br />Lokasi Penjemputan: <?= $book->location_from ?></small><br />
+						<small class="btn-block">Kota Tujuan: <?= $book->city_to ?> <br />Alamat Tujuan: <?= $book->location_to ?></small>
+						</div>
+					</div>
+				</div>
         <div class="invoice-total">
 						<p style="margin-bottom:0.5rem;"><strong>Tanggal Sewa:</strong> <?= $book->start_book ?></p>
 						<p style="margin-bottom:1rem;"><strong>Tanggal Dikembalikan:</strong> <?= $book->end_book ?></p>
