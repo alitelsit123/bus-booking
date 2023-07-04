@@ -89,11 +89,13 @@ class Book extends MY_Controller {
 			$this->db->insert('bookings', $transactionData);
 		} else {
 			$token = $existingBook->token;
-			$this->Book_model->update($existingBook->id, [
-				'start_book' => $start_book,
-				'end_book' => $end_book,
-				'gross_amount' => $gross_amount,
-			]);
+			if ($start_book && $end_book) {
+				$this->Book_model->update($existingBook->id, [
+					'start_book' => $start_book,
+					'end_book' => $end_book,
+					'gross_amount' => $gross_amount,
+				]);
+			}
 
 			try {
 				// $statusTransaction = $this->checkToken($existingBook->code);
@@ -141,8 +143,16 @@ class Book extends MY_Controller {
 				try {
 					$midtransStatus = $this->getMidtransStatus($token,$result);
 				} catch (\Throwable $th) {
-					echo 'pending';
-					return;					
+					$today = date('Y-m-d');
+					$dateFromResult = $result['date'];
+					$diff = strtotime($today) - strtotime($dateFromResult);
+					$daysDifference = floor($diff / (60 * 60 * 24));
+
+					if ($daysDifference >= 1) {
+						$this->Book_model->update($book['id'],['status' => 'failed']);
+						echo 'failed';
+						return;					
+					}
 				}
 				
 				// Process the Midtrans status and send appropriate response to the client
@@ -168,9 +178,10 @@ class Book extends MY_Controller {
 			$this->Book_model->update($book['id'],['status' => 'settlement','payment_date' => date('Y-m-d H:i:s')]);
 			return 'settlement';
 		} elseif ($status->transaction_status === 'pending') {
-			// Transaction is pending
+			$this->Book_model->update($book['id'],['status' => 'pending']);
 			return 'pending';
 		} else {
+			$this->Book_model->update($book['id'],['status' => 'failed']);
 			// Transaction is failed or other status
 			return 'failed';
 		}

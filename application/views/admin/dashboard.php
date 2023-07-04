@@ -6,7 +6,7 @@
         <div class="row">
 					<?php foreach($this->Bus_model->getAll() as $row): ?>
 						<div class="col-3">
-							<div class="card" style="width: 18rem;">
+							<div class="card">
 								<?php if($row->image): ?>
 								<img src="<?= base_url('assets/upload/'.$row->image) ?>" alt="" class="img-card-top" srcset="" style="" />
 								<?php else: ?>

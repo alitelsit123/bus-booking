@@ -34,6 +34,13 @@
 												<br />
 												<small style="color:red;">Mohon lunasi sebelum <?= $cd->format('Y-m-d') ?></small>
 												<?php endif; ?>
+												<hr />
+												<div class="card card-outlined mt-1">
+													<div class="card-body">
+													<small class="btn-block">Kota Penjemputan: <?= $book->city_from ?> <br />Lokasi Penjemputan: <?= $book->location_from ?></small>
+													<small class="">Kota Tujuan: <?= $book->city_to ?> <br />Alamat Tujuan: <?= $book->location_to ?></small>
+													</div>
+												</div>
 											</td>
 											<td>
 												<?php if(!$book->payment_date && $this->Bus_model->find($book->bus_id)): ?>

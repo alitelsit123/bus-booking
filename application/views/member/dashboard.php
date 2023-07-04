@@ -3,30 +3,10 @@
 <!-- Main content -->
 <section class="content">
       <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3><?= sizeof($this->Bus_model->getAll()) ?></h3>
-
-                <p>Bis Tersedia</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-bag"></i>
-              </div>
-              <a href="<?= base_url('/member/book') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          
-        </div>
-        <!-- /.row -->
-				<hr />
 				<div class="row">
 					<?php foreach($this->Bus_model->getAll() as $row): ?>
 						<div class="col-4">
-							<div class="card" style="width: 18rem;">
+							<div class="card">
 								<?php if($row->image): ?>
 								<img src="<?= base_url('assets/upload/'.$row->image) ?>" alt="" class="img-card-top" srcset="" style="" />
 								<?php else: ?>

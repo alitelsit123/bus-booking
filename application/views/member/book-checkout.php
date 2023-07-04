@@ -22,7 +22,6 @@ function checkStatus(bookIds) {
 		method: 'GET',
 		success: function(response) {
 			// Process the response received from the server
-			console.log(response)
 			// Swal.fire('Berhasil', 'Pembayaran anda berhasil, Silahkan cek status transaksi di menu transaksi', 'success')
 
 			// Check if the condition you are polling for is met
@@ -30,6 +29,14 @@ function checkStatus(bookIds) {
 				Swal.fire('Berhasil', 'Pembayaran anda berhasil, Silahkan cek status transaksi di menu transaksi', 'success')
 				setTimeout(() => {
 					document.location.href = "<?= base_url('member/transaction') ?>"
+				}, 5000);
+				// Stop polling
+				clearInterval(pollingInterval);
+				pollingInterval = null;
+			} else if($response === 'failed') {
+				Swal.fire('Berhasil', 'Pembayaran anda kedaluarsa, mohon refresh halaman', 'error')
+				setTimeout(() => {
+					document.location.reload()
 				}, 5000);
 				// Stop polling
 				clearInterval(pollingInterval);
@@ -44,7 +51,7 @@ function checkStatus(bookIds) {
 }
 <?php if($existingBook): ?>
 pollingInterval = setInterval(function() {
-checkStatus(bookId);
+	checkStatus(bookId);
 }, 5000); // Poll every 5 seconds (adjust as needed)
 <?php endif; ?>
 </script>
@@ -53,10 +60,10 @@ checkStatus(bookId);
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-12">
-				<div class="callout callout-info">
+				<!-- <div class="callout callout-info">
 					<h5><i class="fas fa-info"></i> Note:</h5>
 					This page has been enhanced for printing. Click the print button at the bottom of the invoice to test.
-				</div>
+				</div> -->
 
 
 				<!-- Main content -->
@@ -85,8 +92,8 @@ checkStatus(bookId);
 								<address>
 									<strong><?= $existingBook->city_from ?? $data['city_from'] ?></strong><br>
 									<?= $existingBook->location_from ?? $data['location_from'] ?><br>
-									Phone: <?= $this->Company_model->first()->phone ?><br>
-									Email: <?= $this->Company_model->first()->email ?>
+									Phone: <?= $this->session->userdata('user')->phone ?><br>
+									Email: <?= $this->session->userdata('user')->email ?>
 								</address>
 							</div>
 						</div>
