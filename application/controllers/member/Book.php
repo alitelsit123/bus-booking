@@ -146,6 +146,7 @@ class Book extends MY_Controller {
 					$today = date('Y-m-d');
 					$dateFromResult = $result['date'];
 					$diff = strtotime($today) - strtotime($dateFromResult);
+					// $daysDifference = floor($diff / (60 * 60 * 24));
 					$daysDifference = floor($diff / (60 * 60 * 24));
 
 					if ($daysDifference >= 1) {
@@ -154,13 +155,16 @@ class Book extends MY_Controller {
 						return;					
 					}
 				}
-				
 				// Process the Midtrans status and send appropriate response to the client
 				// Replace the following code with your actual implementation
 				if ($midtransStatus === 'settlement') {
 						echo 'success';
 				} else {
+					if ($midtranStatus == 'failed') {
+						echo 'failed';
+					} else {
 						echo 'Payment is pending or failed.';
+					}
 				}
 		} else {
 				echo 'No booking found for the given bus ID.';
