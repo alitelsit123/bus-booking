@@ -4,7 +4,6 @@ $existingBook = null;
 if ($bus) {
 	// $existingBook = $this->db->select('*')->get_where('bookings', ['bus_id' => $bus->id, 'user_id' => $this->session->userdata('user')->id])->row();
 	$existingBook = $this->db->select('*')->get_where('bookings', ['status' => 'pending','bus_id' => $bus->id, 'user_id' => $this->session->userdata('user')->id])->row();
-	// var_dump($existingBook);return;exit(0);
 	if ($existingBook) {
 		// var_dump($existingBook);
 		if ($data['city_from'] && $data['location_from'] && $data['city_to'] && $data['location_to']) {
@@ -33,7 +32,7 @@ function checkStatus(bookIds) {
 				// Stop polling
 				clearInterval(pollingInterval);
 				pollingInterval = null;
-			} else if($response === 'failed') {
+			} else if(response === 'failed') {
 				Swal.fire('Berhasil', 'Pembayaran anda kedaluarsa, mohon refresh halaman', 'error')
 				setTimeout(() => {
 					document.location.reload()

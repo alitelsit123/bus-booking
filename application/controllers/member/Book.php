@@ -35,13 +35,13 @@ class Book extends MY_Controller {
 		
 		// Get the current user's ID from authentication (assuming you have authentication implemented)
 		$user_id = $this->session->userdata('user')->id;
-		$this->create($bus_id,$startDate,$endDate);
+		$this->create($bus_id,$startDate,$endDate,$data);
 		$this->load->view('member/book-checkout', $data);
 	}
 	public function getToken() {
 		echo $this->create();
 	}
-	public function create($id = null,$startDate = null,$endDate = null)
+	public function create($id = null,$startDate = null,$endDate = null, $derivedData = [])
 	{
 		$start_book = $this->input->post('start_book') ?? $startDate;
 		$end_book = $this->input->post('end_book') ?? $endDate;
@@ -94,7 +94,12 @@ class Book extends MY_Controller {
 					'start_book' => $start_book,
 					'end_book' => $end_book,
 					'gross_amount' => $gross_amount,
+					'city_from' => isset($derivedData['data']['city_from']) ? $derivedData['data']['city_from']: $existingBook->city_from,
+					'location_from' => isset($derivedData['data']['location_from']) ? $derivedData['data']['location_from']: $existingBook->location_from,
+					'city_to' => isset($derivedData['data']['city_to']) ? $derivedData['data']['city_to']: $existingBook->city_to,
+					'location_to' => isset($derivedData['data']['location_to']) ? $derivedData['data']['location_to']: $existingBook->location_to,
 				]);
+				// var_dump($this->Book_model->find($existingBook->id));exit(0);
 			}
 
 			try {
@@ -160,7 +165,7 @@ class Book extends MY_Controller {
 				if ($midtransStatus === 'settlement') {
 						echo 'success';
 				} else {
-					if ($midtranStatus == 'failed') {
+					if ($midtransStatus == 'failed') {
 						echo 'failed';
 					} else {
 						echo 'Payment is pending or failed.';

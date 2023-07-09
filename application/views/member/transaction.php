@@ -43,13 +43,15 @@
 												</div>
 											</td>
 											<td>
-												<?php if(!$book->payment_date && $this->Bus_model->find($book->bus_id)): ?>
+												<?php if(!$book->payment_date && $this->Bus_model->find($book->bus_id) && $book->status == 'pending'): ?>
 												<form action="<?= base_url('member/book/checkout') ?>/<?= $book->bus_id ?>" method="get">
 													<input type="hidden" name="date" value="<?= $book->start_book ?> - <?= $book->end_book ?>" />
 													<button type="submit" class="btn btn-success float-right">
 														Bayar Sekarang
 													</button>
 												</form>
+												<?php elseif($book->status == 'failed'): ?>
+												<div class="badge badge-danger">Transaksi Kedaluarsa</div>
 												<?php endif; ?>
 												<?php if(!$this->Bus_model->find($book->bus_id)): ?>
 												Tidak bisa melanjutkan transaksi, data bus tidak ada
