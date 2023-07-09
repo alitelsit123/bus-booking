@@ -1,5 +1,5 @@
       <!--  footer -->
-      <footer id="contact">
+      <!-- <footer id="contact">
          <div class="footer">
             <div class="copyright">
                <div class="container">
@@ -11,7 +11,7 @@
                </div>
             </div>
          </div>
-      </footer>
+      </footer> -->
       <!-- end footer -->
       <!-- Javascript files-->
       <script src="<?= base_url('assets/js/jquery.min.js') ?>"></script>
