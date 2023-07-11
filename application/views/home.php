@@ -67,23 +67,23 @@
 		<div class="container">
 			<div class="row">
 					<div class="col-md-4">
-						<div class="box_text">
+						<div class="box_text p-0">
 								<!-- <h3>NYAMAN</h3> -->
-								<i><img src="<?= base_url('assets/bus/auto selamat datang/IMG_20230701_070222.jpg') ?>" alt="#"/></i>
+								<i class="p-0"><img src="<?= base_url('assets/bus/auto selamat datang/IMG_20230701_070222.jpg') ?>" alt="#"/></i>
 								<p>#</p>
 						</div>
 					</div>
 					<div class="col-md-4">
-						<div class="box_text">
+						<div class="box_text p-0">
 								<!-- <h3>AUTO DIAGNOSE</h3> -->
-								<i><img src="<?= base_url('assets/bus/auto selamat datang/IMG_20230701_070346.jpg') ?>" alt="#"/></i>
+								<i class="p-0"><img src="<?= base_url('assets/bus/auto selamat datang/IMG_20230701_070346.jpg') ?>" style="height:210.19px;" alt="#"/></i>
 								<p>#</p>
 						</div>
 					</div>
 					<div class="col-md-4">
-						<div class="box_text">
+						<div class="box_text p-0">
 								<!-- <h3>AUTO DIAGNOSE</h3> -->
-								<i><img src="<?= base_url('assets/bus/auto selamat datang/IMG_20230701_070452.jpg') ?>" alt="#"/></i>
+								<i class="p-0"><img src="<?= base_url('assets/bus/auto selamat datang/IMG_20230701_070452.jpg') ?>" alt="#"/></i>
 								<p>#</p>
 						</div>
 					</div>

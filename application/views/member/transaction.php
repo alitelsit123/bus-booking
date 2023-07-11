@@ -13,6 +13,7 @@
 							<th>#TX</th>
 							<th>Nama Bus</th>
 							<th>Informasi</th>
+							<th>Tanggal Pembayaran</th>
 							<th>#</th>
 						</tr>
 					</thead>
@@ -41,6 +42,9 @@
 													<small class="">Kota Tujuan: <?= $book->city_to ?> <br />Alamat Tujuan: <?= $book->location_to ?></small>
 													</div>
 												</div>
+											</td>
+											<td>
+												<?= $book->payment_date ?>
 											</td>
 											<td>
 												<?php if(!$book->payment_date && $this->Bus_model->find($book->bus_id) && $book->status == 'pending'): ?>

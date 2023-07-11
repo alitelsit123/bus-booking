@@ -16,4 +16,20 @@ class Transaction extends MY_Controller {
         $this->session->set_flashdata('success', 'Transaksi deleted successfully.');
 				redirect($_SERVER['HTTP_REFERER']);
     }
+
+		public function fetch_data() {
+			$startDate = $this->input->get('startDate');
+			$endDate = $this->input->get('endDate');
+			$search = $this->input->get('search');
+
+			if (!$startDate && !$search) {
+				$data = $this->Book_model->getBookDataByWDateRange();
+			} else {
+				$busIds = $this->Bus_model->search($search);
+				$data = $this->Book_model->getBookDataByDateRange($startDate, $endDate, array_column($busIds, 'id'));
+			}
+
+			// Return the data as JSON response
+			echo json_encode($data);
+	}
 }

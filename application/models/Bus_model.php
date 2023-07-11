@@ -20,6 +20,14 @@ class Bus_model extends CI_Model
     {	
         return $this->db->get_where($this->table, ['id' => $id])->row();
     }
+		public function search($search)
+    {	
+			$this->db->select('id');
+			$this->db->group_start();
+			$this->db->like('name',$search);
+			$this->db->group_end();
+        return $this->db->get($this->table)->result_array();
+    }
 
     public function delete($id)
     {

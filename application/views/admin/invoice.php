@@ -73,7 +73,7 @@
                     <th>Nama Bus</th>
                     <th>Jumlah Hari</th>
                     <th>Biaya per hari</th>
-                    <th>Alamat</th>
+                    <th>Informasi</th>
                 </tr>
             </thead>
             <tbody>
@@ -85,7 +85,11 @@
 										?>
 										<td><?= $startDate->diff($endDate)->days ?> Hari</td>
                     <td>Rp. <?= number_format($this->Bus_model->find($book->bus_id)->price_daily) ?></td>
-                    <td><?= $this->Users->find($book->user_id)->address ?></td>
+                    <td>
+											<?= $this->Users->find($book->user_id)->name ?>
+											<br />
+											<i><?= $this->Users->find($book->user_id)->phone ?></i>
+										</td>
                 </tr>
             </tbody>
         </table>

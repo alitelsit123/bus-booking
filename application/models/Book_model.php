@@ -51,4 +51,31 @@ class Book_model extends CI_Model
         $this->db->delete($this->table);
         return $this->db->affected_rows();
     }
+		public function getBookDataByDateRange($startDate, $endDate, $bus_ids) {
+			$this->db->select('DATE(payment_date) AS date, SUM(gross_amount) AS total');
+			$this->db->from($this->table);
+			if (sizeof($bus_ids) > 0) {
+				$array = $bus_ids;
+				for ($i = 0; $i < count($array); $i++) {
+					$array[$i] = intval($array[$i]);
+				}
+				$this->db->where_in('bus_id', $array);
+			}
+			$where = "payment_date is  NOT NULL";
+			$this->db->where($where);
+			if ($startDate) {
+				$this->db->where('payment_date >=', $startDate);
+				$this->db->where('payment_date <=', $endDate);
+			}
+			$this->db->group_by('DATE(payment_date)');
+			$query = $this->db->get();
+			return $query->result();
+	}
+	public function getBookDataByWDateRange() {
+		$this->db->select('DATE(payment_date) AS date, SUM(gross_amount) AS total');
+		$this->db->from($this->table);
+		$this->db->group_by('DATE(payment_date)');
+		$query = $this->db->get();
+		return $query->result();
+}
 }
