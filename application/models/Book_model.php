@@ -78,4 +78,33 @@ class Book_model extends CI_Model
 		$query = $this->db->get();
 		return $query->result();
 }
+public function getBookDataByDateRanges($startDate, $endDate, $bus_ids) {
+	$this->db->select('busses.name as date, count(busses.name) AS total');
+	$this->db->from($this->table);
+	if (sizeof($bus_ids) > 0) {
+		$array = $bus_ids;
+		for ($i = 0; $i < count($array); $i++) {
+			$array[$i] = intval($array[$i]);
+		}
+		$this->db->where_in('bookings.bus_id', $array);
+	}
+	$where = "bookings.payment_date is  NOT NULL";
+	$this->db->where($where);
+	if ($startDate) {
+		$this->db->where('DATE(bookings.payment_date) >=', $startDate.' 00:00:00');
+		$this->db->where('DATE(bookings.payment_date) <=', $endDate.' 00:00:00');
+	}
+$this->db->join('busses', 'busses.id=bookings.bus_id');
+$this->db->group_by('busses.name');
+$query = $this->db->get();
+return $query->result();
+}
+public function getBookDataByWDateRanges() {
+$this->db->select('busses.name as date, count(busses.name) AS total');
+$this->db->from($this->table);
+$this->db->join('busses', 'busses.id=bookings.bus_id');
+$this->db->group_by('busses.name');
+$query = $this->db->get();
+return $query->result();
+}
 }

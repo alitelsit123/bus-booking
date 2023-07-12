@@ -32,4 +32,19 @@ class Transaction extends MY_Controller {
 			// Return the data as JSON response
 			echo json_encode($data);
 	}
+	public function fetch_datab() {
+		$startDate = $this->input->get('startDate');
+		$endDate = $this->input->get('endDate');
+		$search = $this->input->get('search');
+
+		if (!$startDate && !$search) {
+			$data = $this->Book_model->getBookDataByWDateRanges();
+		} else {
+			$busIds = $this->Bus_model->search($search);
+			$data = $this->Book_model->getBookDataByDateRanges($startDate, $endDate, array_column($busIds, 'id'));
+		}
+
+		// Return the data as JSON response
+		echo json_encode($data);
+}
 }
