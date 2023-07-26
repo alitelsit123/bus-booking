@@ -13,8 +13,8 @@ class AuthController extends CI_Controller {
 	public function action_register() {
 		$this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[users.email]');
 		$this->form_validation->set_rules('password', 'Password', 'required');
-		$this->form_validation->set_rules('name', 'Nama', 'required');
-		$this->form_validation->set_rules('phone', 'Nomor HP', 'required');
+		$this->form_validation->set_rules('name', 'Nama', 'required|is_unique[users.name]');
+		$this->form_validation->set_rules('phone', 'Nomor HP', 'required|is_unique[users.phone]');
 		$this->form_validation->set_rules('nik', 'Nomor Induk', 'required');
 		$this->form_validation->set_rules('address', 'Alamat', 'required');
 

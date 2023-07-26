@@ -1,4 +1,5 @@
 <?php $this->load->view('layout-header-dashboard') ?>
+
 <!-- Main content -->
 <section class="content">
    <div class="container-fluid">
@@ -19,18 +20,24 @@
                         <input type="date" name="akhir" id="akhir" class="form-control">
                     </div>
                     <div class="col-md-3">
+											
                         <label for="bus">Armada</label>
                         <select name="bus" id="bus" class="form-control">
                             <option value=""></option>
                             <?php 
-                            $host = mysqli_connect("localhost","root","","bus_booking");
-                            $query_mysql = mysqli_query($host, "SELECT * FROM busses")or die(mysqli_error());
-                            while($dt = mysqli_fetch_array($query_mysql)){
-                                ?>
-                            <option value="<?= $dt['id'] ?>"><?= $dt['name'] ?></option>
-                            <?php } ?>
+                            // $host = mysqli_connect("localhost","root","","bus_booking");
+                            // $query_mysql = mysqli_query($host, "SELECT * FROM busses")or die(mysqli_error());
+                            // while($dt = mysqli_fetch_array($query_mysql)){
+                                foreach($this->Bus_model->getAll() as $dt):
+																?>
+                            <option value="<?= $dt->id ?>"><?= $dt->name ?></option>
+                            <?php 
+													// } 
+																endforeach;
+													?>
                         </select>
                     </div>
+										
                     <div class="col-md-3">
                         <label for="cetak" style="color: #fff;">p</label>
                         <button type="submit" class="btn btn-primary" id="cetak" style="width: 100%">Cetak</button>
@@ -76,7 +83,18 @@
                         </div>
                      </td>
                      <td>
-                        <?= $book->payment_date ?>
+												<?php
+												date_default_timezone_set('Asia/Jakarta');
+												$paymentDate = new DateTime($book->payment_date);
+												$daysInIndonesian = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+												$monthsInIndonesian = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+
+												$dayInIndonesian = $daysInIndonesian[(int)$paymentDate->format('w')];
+												$monthInIndonesian = $monthsInIndonesian[(int)$paymentDate->format('n') - 1];
+												$formattedDate = $dayInIndonesian . ', ' . $paymentDate->format('j') . ' ' . $monthInIndonesian . ' ' . $paymentDate->format('Y H:i');
+
+												?>
+                        <?= $formattedDate ?>
                      </td>
                      <td>
                         <?php if ($book->payment_date) : ?>
@@ -104,8 +122,10 @@
    </div>
    <!-- /.container-fluid -->
 </section>
+
 <!-- /.content -->
 <script>
+	
    var sd = null;
    var ed = null;
    var s = null;
@@ -233,7 +253,6 @@
              });
          }
      });
-   
          // Initialize Date Range Picker
          $('#date-range').daterangepicker({
              autoUpdateInput: false,

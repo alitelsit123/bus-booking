@@ -22,9 +22,9 @@
 												</div>
 											</div>
 											<div class="col-md-6">
-												<div class="text_img" style="width:370px;height:329px;">
+												<!-- <div class="text_img" style="width:370px;height:329px;">
 														<figure><img src="<?= base_url('assets/bus/auto selamat datang/IMG_20230701_070222.jpg') ?>" alt="#" style="width:100%;height:auto;" /></figure>
-												</div>
+												</div> -->
 											</div>
 									</div>
 								</div>
@@ -44,21 +44,21 @@
 												</div>
 											</div>
 											<div class="col-md-6">
-												<div class="text_img" style="width:370px;height:329px;">
+												<!-- <div class="text_img" style="width:370px;height:329px;">
 														<figure><img src="<?= base_url('assets/bus/bg selamat datang/IMG_20230701_065414.jpg') ?>" alt="#"/></figure>
-												</div>
+												</div> -->
 											</div>
 									</div>
 								</div>
 						</div>
 					</div>
 			</div>
-			<a class="carousel-control-prev" href="#banner1" role="button" data-slide="prev">
+			<!-- <a class="carousel-control-prev" href="#banner1" role="button" data-slide="prev">
 			<i class="fa fa-chevron-left" aria-hidden="true"></i>
 			</a>
 			<a class="carousel-control-next" href="#banner1" role="button" data-slide="next">
 			<i class="fa fa-chevron-right" aria-hidden="true"></i>
-			</a>
+			</a> -->
 		</div>
 </section>
 <!-- end banner -->
@@ -69,21 +69,21 @@
 					<div class="col-md-4">
 						<div class="box_text p-0">
 								<!-- <h3>NYAMAN</h3> -->
-								<i class="p-0"><img src="<?= base_url('assets/bus/auto selamat datang/IMG_20230701_070222.jpg') ?>" alt="#"/></i>
+								<i class="p-0"><img src="<?= base_url('assets/bus/auto selamat datang/IMG_20230701_070222.jpg') ?>" style="height:262.19px;" alt="#"/></i>
 								<p>#</p>
 						</div>
 					</div>
 					<div class="col-md-4">
 						<div class="box_text p-0">
 								<!-- <h3>AUTO DIAGNOSE</h3> -->
-								<i class="p-0"><img src="<?= base_url('assets/bus/auto selamat datang/IMG_20230701_070346.jpg') ?>" style="height:210.19px;" alt="#"/></i>
+								<i class="p-0"><img src="<?= base_url('assets/bus/auto selamat datang/IMG_20230701_070346.jpg') ?>" style="height:262.19px;" alt="#"/></i>
 								<p>#</p>
 						</div>
 					</div>
 					<div class="col-md-4">
 						<div class="box_text p-0">
 								<!-- <h3>AUTO DIAGNOSE</h3> -->
-								<i class="p-0"><img src="<?= base_url('assets/bus/auto selamat datang/IMG_20230701_070452.jpg') ?>" alt="#"/></i>
+								<i class="p-0"><img src="<?= base_url('assets/bus/auto selamat datang/IMG_20230701_070452.jpg') ?>" style="height:262.19px;" alt="#"/></i>
 								<p>#</p>
 						</div>
 					</div>

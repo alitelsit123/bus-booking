@@ -7,7 +7,6 @@ class Transaction extends MY_Controller {
 		$startDate = $this->input->get('startDate');
 		$endDate = $this->input->get('endDate');
 		$search = $this->input->get('search');
-
 		$this->load->view('admin/transaction');
 	}
 	public function invoice($id) {

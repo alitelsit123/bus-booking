@@ -134,7 +134,7 @@
 
 									<div class="form-group">
 											<label for="phone">Phone</label>
-											<input type="text" class="form-control" name="phone" id="phone" value="<?php echo set_value('phone'); ?>">
+											<input type="number" class="form-control" name="phone" id="phone" value="<?php echo set_value('phone'); ?>">
 											<small style="color:red;">
 											
 											<?= $this->session->flashdata('phone') ?>
@@ -143,7 +143,7 @@
 
 									<div class="form-group">
 											<label for="nik">NIK</label>
-											<input type="text" class="form-control" name="nik" id="nik" value="<?php echo set_value('nik'); ?>">
+											<input type="number" class="form-control" name="nik" id="nik" value="<?php echo set_value('nik'); ?>">
 											<small style="color:red;">
 											<?= $this->session->flashdata('nik') ?>
 											
