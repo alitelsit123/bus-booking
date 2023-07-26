@@ -7,7 +7,36 @@
             <!-- Date Range Filter -->
             <div class="form-group">
                <label for="date-range">Filter by Date Range:</label>
-               <input type="text" id="date-range" class="form-control">
+               <input type="text" id="date-range" class="form-control mb-3">
+               <form action="<?php echo base_url('admin/transaction/cetak'); ?>" method="POST" target="_blank">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="awal">Tanggal Awal</label>
+                        <input type="date" name="awal" id="awal" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="akhir">Tanggal Akhir</label>
+                        <input type="date" name="akhir" id="akhir" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="bus">Armada</label>
+                        <select name="bus" id="bus" class="form-control">
+                            <option value=""></option>
+                            <?php 
+                            $host = mysqli_connect("localhost","root","","bus_booking");
+                            $query_mysql = mysqli_query($host, "SELECT * FROM busses")or die(mysqli_error());
+                            while($dt = mysqli_fetch_array($query_mysql)){
+                                ?>
+                            <option value="<?= $dt['id'] ?>"><?= $dt['name'] ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="cetak" style="color: #fff;">p</label>
+                        <button type="submit" class="btn btn-primary" id="cetak" style="width: 100%">Cetak</button>
+                    </div>
+                </div>
+               </form>
             </div>
             <!-- DataTables table -->
             <table id="myTable" class="table table-stripped">

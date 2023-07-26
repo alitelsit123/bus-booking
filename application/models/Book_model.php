@@ -45,7 +45,14 @@ class Book_model extends CI_Model
         return $this->db->affected_rows();
     }
 
-    public function delete($id)
+    public function range($awal, $akhir)
+    {
+        // $this->db->get_where( ['date BETWEEN ' . $awal . ' AND ' . $akhir])->num_rows();
+		$this->db->from('bookings');
+        return $this->db->where('date BETWEEN "' . $awal . '" AND "' . $akhir . '"')->get();
+        // return $this->db->affected_rows();
+    }
+	public function delete($id)
     {
         $this->db->where('id', $id);
         $this->db->delete($this->table);

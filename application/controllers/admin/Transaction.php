@@ -4,11 +4,36 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Transaction extends MY_Controller {
 
 	public function index(){
+		$startDate = $this->input->get('startDate');
+		$endDate = $this->input->get('endDate');
+		$search = $this->input->get('search');
+
 		$this->load->view('admin/transaction');
 	}
 	public function invoice($id) {
 		$book = $this->Book_model->find($id);
 		$this->load->view('admin/invoice', ['book' => $book]);
+	}
+	public function cetak() {
+		$awal = $this->input->post('awal');
+		$akhir = $this->input->post('akhir');
+		$bus = $this->input->post('bus');
+		// $search = $this->input->post('search');
+
+		if (!$awal) {
+			$cek = '0';
+			$data = $this->Book_model->getAll();
+			$this->load->view('admin/cetak', ['data' => $data, 'cek' => $cek, 'bus' => $bus]);
+		} else {
+			// $busIds = $this->Bus_model->search($search);
+			// $data = $this->Book_model->getBookDataByDateRanges($awal, $akhir, array_column($busIds, 'id'));
+			// $data = $this->Book_model->range($awal, $akhir);
+			$cek = '1';
+			$awal1 = $this->input->post('awal');
+			$akhir1 = $this->input->post('akhir');
+			$this->load->view('admin/cetak', ['cek' => $cek, 'awal1' => $awal1, 'akhir1' => $akhir1, 'bus' => $bus]);
+		}
+
 	}
 	public function delete($id)
     {
