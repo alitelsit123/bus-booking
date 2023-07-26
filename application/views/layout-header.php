@@ -95,9 +95,13 @@
 										<input type="password" name="password" class="form-control" value="<?php echo set_value('password'); ?>">
 										<?php echo form_error('password'); ?>
 									</div>
-
-									<!-- Submit button -->
-									<button type="submit" class="btn btn-primary">Login</button>
+									
+									<div class="d-flex align-items-center justify-content-between">
+										<?php
+										echo anchor(site_url() . 'lupa_password', 'Lupa Password');
+										?>
+										<button type="submit" class="btn btn-primary">Login</button>
+									</div>
 
 									<?php echo form_close(); ?>
 									<!-- End of your login form -->

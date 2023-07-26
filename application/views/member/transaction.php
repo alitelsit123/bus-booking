@@ -44,7 +44,18 @@
 												</div>
 											</td>
 											<td>
-												<?= $book->payment_date ?>
+												<?php
+												date_default_timezone_set('Asia/Jakarta');
+												$paymentDate = new DateTime($book->payment_date);
+												$daysInIndonesian = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+												$monthsInIndonesian = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+
+												$dayInIndonesian = $daysInIndonesian[(int)$paymentDate->format('w')];
+												$monthInIndonesian = $monthsInIndonesian[(int)$paymentDate->format('n') - 1];
+												$formattedDate = $dayInIndonesian . ', ' . $paymentDate->format('j') . ' ' . $monthInIndonesian . ' ' . $paymentDate->format('Y H:i');
+
+												?>
+												<?= $formattedDate ?>
 											</td>
 											<td>
 												<?php if(!$book->payment_date && $this->Bus_model->find($book->bus_id) && $book->status == 'pending'): ?>

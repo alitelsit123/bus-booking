@@ -37,7 +37,7 @@
 											<span aria-hidden="true">&times;</span>
 										</button>
 									</div>
-									<form action="<?= base_url('member/book/checkout').'/'.$row->id ?>" method="get">
+									<form action="<?= base_url('member/book/checkout').'/'.$row->id ?>" method="get" class="form-<?= $row->id ?>">
 										<div class="modal-body">
 											<div class="input-group">
 												<div class="input-group-prepend">
@@ -57,6 +57,10 @@
 												</script>
 											</div>
 											<div class="form-group mt-3">
+												<label for="">Armada</label>
+												<input type="text" readonly name="" value="<?= $row->name ?>" class="form-control" >
+											</div>
+											<div class="form-group mt-3">
 												<label for="">Dari Kota</label>
 												<input type="text" name="city_from" class="form-control" >
 											</div>
@@ -73,12 +77,15 @@
 												<label for="">Tujuan Wisata</label>
 												<input type="text" name="location_to" class="form-control" >
 											</div>
+											<div class="alert alert-danger alert-<?= $row->id ?>" style="display:none;">
+												<strong>Gagal!</strong> <span>Bus tidak tersedia.</span>
+											</div>
 										</div>
 										<div class="modal-footer">
 											<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 											<button
-											type="submit" 
-											class="btn btn-primary">Lanjutkan</button>
+											type="button" 
+											class="btn btn-primary btn-sbm-<?= $row->id ?>">Lanjutkan</button>
 										</div>
 									</form>
 								</div>
@@ -87,6 +94,20 @@
 					</div>
 				</div>
 			</div>
+			<script>
+				$(document).ready(function() {
+					$('.btn-sbm-<?= $row->id ?>').click(function() {
+						$('.alert-<?= $row->id ?>').hide()
+						$.post('<?= base_url('member/book/avaibility') ?>', {date: $('#reservation<?= $row->id ?>').val(),bus_id: <?= $row->id ?>}, function(data) {
+							if (data.error) {
+								$('.alert-<?= $row->id ?>').show()
+							} else {
+								$('.form-<?= $row->id ?>').submit()
+							}
+						})
+					})
+				})
+			</script>
 			<?php endforeach; ?>
 		</div>
 	</div><!-- /.container-fluid -->

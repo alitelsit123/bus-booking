@@ -9,6 +9,23 @@ class Book extends MY_Controller {
 	public function index(){
 		$this->load->view('member/book');
 	}
+	public function avaibility() {
+		$busId = $this->input->post('bus_id');
+		$dates = explode(' - ', $this->input->post('date'));
+		$startDate = date('Y-m-d H:i:s', strtotime($dates[0]));
+		$endDate = date('Y-m-d H:i:s', strtotime($dates[1]));
+		$query = $this->db->query("SELECT * FROM bookings WHERE bus_id = ? AND ((start_book BETWEEN ? AND ?) OR (end_book BETWEEN ? AND ?))", array($busId, $startDate, $endDate, $startDate, $endDate));
+
+		if ($query->num_rows() > 0) {
+				$response = array('error' => 'booking already exists');
+		} else {
+				$response = array();
+		}
+
+		// Send the JSON response
+		header('Content-Type: application/json');
+		echo json_encode($response);
+	}
 	public function checkout($id){
 		$startDate = explode(' - ', $this->input->get('date'))[0];
 		$endDate = explode(' - ', $this->input->get('date'))[1];
