@@ -55,6 +55,10 @@
 													<td><?= $row->name ?></td>
 												</tr>
 												<tr>
+													<td>Mesin</td>
+													<td><?= $row->mesin ?></td>
+												</tr>
+												<tr>
 													<td>Plat</td>
 													<td><?= $row->plat ?></td>
 												</tr>
