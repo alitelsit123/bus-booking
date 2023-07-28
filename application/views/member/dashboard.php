@@ -15,8 +15,8 @@
 								<div class="card-body">
 									<h5 class="mb-2"><strong><?= $row->name ?></strong></h5>
 									<div class="d-block">
-										<div class="badge badge-info"><?= $row->plat ?></div>
 										<div class="badge badge-info"><?= $this->Type_model->find($row->type_id)->name ?? '<small><i>Tipe tidak ada atau dibapus!</i></small>' ?></div>
+										<div class="badge badge-info">Rp. <?= number_format($row->price_daily) ?></div>
 									</div>
 									<!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
 								</div>
